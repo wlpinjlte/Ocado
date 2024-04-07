@@ -16,19 +16,16 @@ import static org.junit.Assert.assertEquals;
 public class ConfigParserTest {
     @Test
     public void testParseJson() throws IOException, ParseException, URISyntaxException {
-        // Tworzenie instancji parsera
+        // Given
         ConfigParser parser = new ConfigParser(Paths.get(Main.class.getClassLoader().getResource("test_config.json").toURI()).toAbsolutePath().toString());
 
-        // Przykładowe dane JSON
-
-
-        // Oczekiwana mapa
+        // When
         Map<String, List<String>> expectedMap = new HashMap<>();
         expectedMap.put("key1", Arrays.asList("a", "b", "c"));
         expectedMap.put("key2", Arrays.asList("x", "y", "z", "w"));
         expectedMap.put("key3", Arrays.asList("1", "2"));
 
-        // Testowanie
+        // Then
         Map<String, List<String>> resultMap = parser.praseJson();
         assertEquals(expectedMap, resultMap);
     }
